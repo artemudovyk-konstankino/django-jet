@@ -11,7 +11,7 @@ from django.http import HttpResponse
 from django.template import Context
 from django.urls import NoReverseMatch, resolve, reverse
 from django.utils import translation
-from django.utils.encoding import force_text, smart_text
+from django.utils.encoding import force_str, smart_text
 from django.utils.functional import Promise
 from django.utils.text import capfirst, slugify
 from django.utils.translation import gettext_lazy as _
@@ -134,7 +134,7 @@ class LazyDateTimeEncoder(json.JSONEncoder):
 		if isinstance(obj, datetime.datetime) or isinstance(obj, datetime.date):
 			return obj.isoformat()
 		elif isinstance(obj, Promise):
-			return force_text(obj)
+			return force_str(obj)
 		return self.encode(obj)
 
 
