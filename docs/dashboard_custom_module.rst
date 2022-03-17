@@ -32,7 +32,7 @@ Example of ``dashboard_modules.py``:
 
         class RecentTickets(DashboardModule):
             title = 'Recent tickets'
-            title_url = Ticket.get_admin_changelist_url()
+            title_url = Ticket.get_admin_changelist_re_path()
             template = 'contact/dashboard_modules/recent_tickets.html'
             limit = 10
 
@@ -140,7 +140,7 @@ in ``dashboard_modules_views.py`` file inside your application:
 
     .. code-block:: python
 
-        from django.conf.urls import url
+        from django.urls import re_path
         from django.contrib import messages
         from django.shortcuts import redirect
         from jet.dashboard import dashboard
@@ -157,7 +157,7 @@ in ``dashboard_modules_views.py`` file inside your application:
 
         # This method registers view's url
         dashboard.urls.register_urls([
-            url(
+            re_path(
                 r'^update_database/',
                 update_database,
                 name='update-database'

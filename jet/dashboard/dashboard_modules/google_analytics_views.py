@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.urls import re_path
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -50,7 +50,7 @@ def google_analytics_callback_view(request):
 
 
 dashboard.urls.register_urls([
-	url(r'^google-analytics/grant/(?P<pk>\d+)/$', google_analytics_grant_view, name='google-analytics-grant'),
-	url(r'^google-analytics/revoke/(?P<pk>\d+)/$', google_analytics_revoke_view, name='google-analytics-revoke'),
-	url(r'^google-analytics/callback/', google_analytics_callback_view, name='google-analytics-callback'),
+	re_path(r'^google-analytics/grant/(?P<pk>\d+)/$', google_analytics_grant_view, name='google-analytics-grant'),
+	re_path(r'^google-analytics/revoke/(?P<pk>\d+)/$', google_analytics_revoke_view, name='google-analytics-revoke'),
+	re_path(r'^google-analytics/callback/', google_analytics_callback_view, name='google-analytics-callback'),
 ])
