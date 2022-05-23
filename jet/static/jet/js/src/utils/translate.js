@@ -1,4 +1,3 @@
-
 module.exports = function(str) {
     const gettext = django.gettext || window.gettext;
     if (gettext == undefined) {
